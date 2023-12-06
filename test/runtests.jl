@@ -33,5 +33,5 @@ using Test
     @test (random_street in adj_list.edges[random_street.B.index]) == random_street.bidirectional
 
     # upper bound
-    @test HashCode2014Solution.approx_upper_bound(adj_list, city.nb_cars) <= city.total_duration * city.nb_cars
+    @test HashCode2014Solution.approx_upper_bound(adj_list, city.nb_cars) <= sum([s.distance for s in streets])
 end
