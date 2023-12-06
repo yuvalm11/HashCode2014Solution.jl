@@ -1,16 +1,16 @@
-using HashCode2014Solution
-using HashCode2014
+include("../src/HashCode2014Solution.jl")
+
 using Test
 
 @testset "HashCode2014Solution.jl" begin
-    city = read_city()
+    city = HashCode2014Solution.read_city()
     junctions = city.junctions
     streets = city.streets
 
-    modified_junctions = get_modified_junctions(city)
-    modified_streets = get_modified_streets(city)
+    modified_junctions = HashCode2014Solution.get_modified_junctions(city)
+    modified_streets = HashCode2014Solution.get_modified_streets(city)
 
-    adj_list = create_adj_list(city)
+    adj_list = HashCode2014Solution.create_adj_list(city)
 
     # modified_junctions
     @test length(modified_junctions) == length(junctions)
