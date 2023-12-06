@@ -124,7 +124,7 @@ function create_adj_list(city::City)
     modified_streets = get_modified_streets(city)
     for street in modified_streets
         push!(edges[street.A.index], street)
-        if !street.bidirectional
+        if street.bidirectional
             push!(edges[street.B.index], street)
         end
     end
