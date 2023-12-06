@@ -1,4 +1,3 @@
-
 """
     get_direction(city::City, A::Int, B::Int)
 

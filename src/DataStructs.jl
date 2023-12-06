@@ -50,7 +50,6 @@ A struct representing a street. Similar to `Street` from `HashCode2014` but with
 - `speed::Float16`: The speed of the street.
 - `connectivity::Int`: The number of streets connected to the second endpoint of the street.
 """
-
 struct ModifiedStreet
     A::ModifiedJunction
     B::ModifiedJunction
