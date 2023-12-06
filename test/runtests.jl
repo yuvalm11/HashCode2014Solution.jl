@@ -31,4 +31,7 @@ using Test
     random_street = rand(modified_streets)
     @test random_street in adj_list.edges[random_street.A.index]
     @test (random_street in adj_list.edges[random_street.B.index]) == random_street.bidirectional
+
+    # upper bound
+    @test HashCode2014Solution.approx_upper_bound(adj_list, city.nb_cars) <= city.total_duration
 end

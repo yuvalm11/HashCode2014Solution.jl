@@ -4,10 +4,13 @@ using BenchmarkTools
 
 
 city = HashCode2014Solution.read_city()
-city = HashCode2014Solution.change_duration(city, 18000)
+# city = HashCode2014Solution.change_duration(city, 18000)
 @show city.total_duration
 
 adj_list = HashCode2014Solution.create_adj_list(city)
+@show adj_list.total_duration
+
+@show HashCode2014Solution.approx_upper_bound(adj_list, city.nb_cars)
 
 # random_solution = HashCode2014Solution.random_walk(city)
 # @show random_solution
