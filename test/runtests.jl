@@ -28,7 +28,7 @@ using Test
 
     # adj_list
     @test length(adj_list.edges) == length(junctions)
-    random_street = rand(streets)
-    @test random_street in adj_list.edges[random_street.endpointA]
-    @test (random_street in adj_list.edges[random_street.endpointB]) == random_street.bidirectional
+    random_street = rand(modified_streets)
+    @test random_street in adj_list.edges[random_street.A.index]
+    @test (random_street in adj_list.edges[random_street.B.index]) == random_street.bidirectional
 end
