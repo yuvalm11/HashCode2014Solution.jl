@@ -1,28 +1,17 @@
-using Graphs, SimpleWeightedGraphs
 
-function create_city_graph(city::City)
-    streets = city.streets
-    sources = Array{Int64, 1}()
-    destinations = Array{Int64, 1}()
-    durations = Array{Int64, 1}()
+"""
+    get_direction(city::City, A::Int, B::Int)
 
-    for street in streets
-        A, B, duration = street.endpointA, street.endpointB, street.duration
-        push!(sources, A)
-        push!(destinations, B)
-        push!(durations, duration)
+Compute the angle of the street from junction A to junction B in a given city with respect to the north.
 
-        if street.bidirectional
-            push!(sources, B)
-            push!(destinations, A)
-            push!(durations, duration)
-        end
-    end
+# Arguments
+- `city::City`: The city object containing the junctions.
+- `A::Int`: The index of the starting junction.
+- `B::Int`: The index of the destination junction.
 
-    return SimpleWeightedDiGraph(sources, destinations, durations)
-end
-
-
+# Returns
+- The direction in degrees from junction A to junction B.
+"""
 function get_direction(city::City, A::Int, B::Int)
     a = city.junctions[A]
     b = city.junctions[B]
@@ -37,18 +26,21 @@ function get_direction(city::City, A::Int, B::Int)
     return (rad2deg(atan(x, y)) + 360) % 360
 end
 
-function get_street(city::City, A::Int, B::Int)
-    s = filter(
-        street -> (street.endpointA == A && street.endpointB == B) || 
-        (street.endpointA == B && street.endpointB == A && street.bidirectional), 
-        city.streets)[1]
-    return s
-end
 
+"""
+    get_connectivity(city::City, street::Street)
+
+Returns the number of streets connected to the endpoint of a given street in a city.
+
+# Arguments
+- `city::City`: The city object.
+- `street::Street`: The street object.
+
+# Returns
+- `Int`: The number of streets connected to the endpoint of the given street.
+"""
 function get_connectivity(city::City, street::Street)
     endpointB = street.endpointB
     connected_streets = filter(s -> s.endpointA == endpointB || (s.endpointB == endpointB && s.bidirectional), city.streets)
     return length(connected_streets)
 end
-
-
