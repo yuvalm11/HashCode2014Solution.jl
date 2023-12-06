@@ -4,8 +4,10 @@ using BenchmarkTools
 
 
 city = HashCode2014Solution.read_city()
-# city = HashCode2014Solution.change_duration(city, 18000)
+city = HashCode2014Solution.change_duration(city, 18000)
 @show city.total_duration
+
+adj_list = HashCode2014Solution.create_adj_list(city)
 
 # random_solution = HashCode2014Solution.random_walk(city)
 # @show random_solution
@@ -13,10 +15,10 @@ city = HashCode2014Solution.read_city()
 # @btime HashCode2014Solution.random_walk($city)
 
 # city = HashCode2014Solution.read_city()
-my_solution = HashCode2014Solution.solve_algorithm(city)
+# my_solution = HashCode2014Solution.solve_algorithm(city)
 
-@show my_solution
-@show HashCode2014Solution.total_distance(my_solution, city)
-@show HashCode2014Solution.is_feasible(my_solution, city, verbose = true)
+# @show my_solution
+# @show HashCode2014Solution.total_distance(my_solution, city)
+# @show HashCode2014Solution.is_feasible(my_solution, city, verbose = true)
 
-@btime HashCode2014Solution.solve_algorithm($city)
+# @btime HashCode2014Solution.solve_algorithm($city)

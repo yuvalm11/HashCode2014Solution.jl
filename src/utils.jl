@@ -44,3 +44,11 @@ function get_street(city::City, A::Int, B::Int)
         city.streets)[1]
     return s
 end
+
+function get_connectivity(city::City, street::Street)
+    endpointB = street.endpointB
+    connected_streets = filter(s -> s.endpointA == endpointB || (s.endpointB == endpointB && s.bidirectional), city.streets)
+    return length(connected_streets)
+end
+
+
