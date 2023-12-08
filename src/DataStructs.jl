@@ -100,11 +100,15 @@ A struct representing an adjacency list.
 - `edges::Vector{Vector{T}}`: The adjacency list.
 - `total_duration::Int`: The total duration of the city.
 - `all_streets::Vector{T}`: A vector of all modified streets.
+- `nb_cars::Int`: The number of cars.
 """
 struct AdjList{T}
     edges::Vector{Vector{T}}
     total_duration::Int
     all_streets::Vector{T}
+    nb_cars::Int
+    starting_junction::Int
+    nb_junctions::Int
 end
 
 
@@ -130,5 +134,5 @@ function create_adj_list(city::City)
         end
     end
     
-    return AdjList(edges, city.total_duration, modified_streets)
+    return AdjList(edges, city.total_duration, modified_streets, city.nb_cars, city.starting_junction, num_vertices)
 end
