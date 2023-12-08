@@ -10,9 +10,6 @@ The package contains a solution as well as tools to solve [Google's HashCode 201
 
 The package is an extension of Guillaume Dalle's [HashCode2014](https://github.com/gdalle/HashCode2014.jl/tree/main) package, and uses its data structures and some of its functions as a base.
 
-```@index
-```
-
 ```@autodocs
 Modules = [HashCode2014Solution]
 ```
