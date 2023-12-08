@@ -27,25 +27,6 @@ end
 
 
 """
-    get_connectivity(city::City, street::Street)
-
-Returns the number of streets connected to the endpoint of a given street in a city.
-
-# Arguments
-- `city::City`: The city object.
-- `street::Street`: The street object.
-
-# Returns
-- `Int`: The number of streets connected to the endpoint of the given street.
-"""
-function get_connectivity(city::City, street::Street)
-    endpointB = street.endpointB
-    connected_streets = filter(s -> s.endpointA == endpointB || (s.endpointB == endpointB && s.bidirectional), city.streets)
-    return length(connected_streets)
-end
-
-
-"""
     find_best_spreading_duration(adj_list::AdjList, resolution::Int)
 
 Find the best spreading duration (that achive the highest total distance) for a given problem graph.

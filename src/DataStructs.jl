@@ -48,7 +48,6 @@ A struct representing a street. Similar to `Street` from `HashCode2014` but with
 - `distance::Int`: The distance of the street.
 - `angle::Int`: The angle of the street with respect to the north.
 - `speed::Float16`: The speed of the street.
-- `connectivity::Int`: The number of streets connected to the second endpoint of the street.
 """
 struct ModifiedStreet
     A::ModifiedJunction
@@ -58,7 +57,6 @@ struct ModifiedStreet
     distance::Int
     angle::Int
     speed::Float16
-    connectivity::Int
 end
 
 
@@ -84,8 +82,7 @@ function get_modified_streets(city::City)
             street.duration,
             street.distance,
             round(get_direction(city, street.endpointA, street.endpointB)),
-            street.distance / street.duration,
-            get_connectivity(city, street)
+            street.distance / street.duration
         ) for street in streets
     ]
 end
